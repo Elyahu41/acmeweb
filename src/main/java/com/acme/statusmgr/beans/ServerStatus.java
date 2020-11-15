@@ -5,11 +5,11 @@ import com.acme.servermgr.ServerManager;
 /**
  * A POJO that represents Server Status and can be used to generate JSON for that status
  */
-public class ServerStatus {
+public class ServerStatus implements Status{
 
-    private  long id;
+    private long id;
     private String contentHeader;
-    private String statusDesc = "Unknown";
+    protected String statusDesc = "Unknown";
 
     /**
      * Construct a ServerStatus using info passed in for identification, and obtaining current
@@ -27,23 +27,23 @@ public class ServerStatus {
         this.statusDesc = "Server is " + ServerManager.getCurrentServerStatus();
     }
 
-    public ServerStatus() {
-
+    public ServerStatus(Status status){
+        id = status.getId();
+        contentHeader = status.getContentHeader();
+        statusDesc = status.getStatusDesc();
     }
+
+    public ServerStatus() {}
 
     public long getId() {
         return id;
     }
 
     public String getContentHeader() {
-
         return contentHeader;
     }
-
 
     public String getStatusDesc() {
         return statusDesc;
     }
-
-
 }

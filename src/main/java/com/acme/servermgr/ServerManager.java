@@ -8,6 +8,10 @@ package com.acme.servermgr;
  */
 public class ServerManager {
 
+    static String operatingStatus = ", and is operating normally";
+    static String memoryStatus = ", and its memory is running low";
+    static String extensionsStatus = ", and is using these extensions - [Hypervisor, Kubernetes, RAID-6]";
+
     /**
      * Get the status of this server
      * @return a descriptive string about the servers status
@@ -20,8 +24,13 @@ public class ServerManager {
      * Find out if this server is operating normally
      * @return Boolean indicating if server is operating normally
      */
-    static public Boolean isOperatingNormally()
-    {
+    static public Boolean isOperatingNormally() {
         return true;
     }
+
+    static public String getOperatingStatus(){return operatingStatus;}
+
+    static public String getMemoryStatus(){return memoryStatus;}
+
+    static public String getExtensionsStatus(){return extensionsStatus;}
 }
