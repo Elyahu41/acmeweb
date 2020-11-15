@@ -1,5 +1,8 @@
 package com.acme.statusmgr.beans;
 
+/**
+ * This interface specifies what methods and variables a Server's Status needs
+ */
 public interface Status {
 
     String statusDesc = null;

@@ -51,6 +51,10 @@ public class StatusController {
         System.out.println("*** DEBUG INFO ***" + id);
     }
 
+    /**
+     * This method is called by spring in when the user enters the /server/status/details url
+     * @return The current Server's Status
+     */
     @RequestMapping("/status/detailed")
     public ServerStatus detailedStatusResponse(@RequestParam(value="name", defaultValue="Anonymous") String name,
                                        @RequestParam() List<String> details) {
