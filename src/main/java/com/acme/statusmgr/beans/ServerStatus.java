@@ -3,13 +3,14 @@ package com.acme.statusmgr.beans;
 import com.acme.servermgr.ServerManager;
 
 /**
- * A POJO that represents Server Status and can be used to generate JSON for that status
+ * A POJO that represents Server Status and can be used to generate JSON for that status. This class also implements
+ *  the Status interface which will help in the decoration of other statuses. All other statuses extend this class.
  */
-public class ServerStatus {
+public class ServerStatus implements Status{
 
-    private  long id;
+    private long id;
     private String contentHeader;
-    private String statusDesc = "Unknown";
+    protected String statusDesc = "Unknown";
 
     /**
      * Construct a ServerStatus using info passed in for identification, and obtaining current
@@ -27,23 +28,27 @@ public class ServerStatus {
         this.statusDesc = "Server is " + ServerManager.getCurrentServerStatus();
     }
 
-    public ServerStatus() {
-
+    /**
+     * Cunstucts a ServerStatus using the type of status passed in through the parameter.
+     * @param status a status
+     */
+    public ServerStatus(Status status){
+        id = status.getId();
+        contentHeader = status.getContentHeader();
+        statusDesc = status.getStatusDesc();
     }
+
+    public ServerStatus() {}
 
     public long getId() {
         return id;
     }
 
     public String getContentHeader() {
-
         return contentHeader;
     }
-
 
     public String getStatusDesc() {
         return statusDesc;
     }
-
-
 }
